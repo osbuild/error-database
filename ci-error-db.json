@@ -1,0 +1,16 @@
+{
+  "errors": [
+    {
+      "id": "COMPOSER-0001",
+      "signal": "Policy rejects FCD355B305707A62: Policy rejected asymmetric algorithm, because MLDSA87_Ed448 is not considered secure",
+      "description": "",
+      "category": "",
+      "component": null,
+      "first_seen": "2026-07-20",
+      "last_seen": "2026-07-20",
+      "occurrences": [],
+      "resolution": null
+    }
+  ],
+  "next_id": 2
+}
