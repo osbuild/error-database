@@ -1,0 +1,6 @@
+site/node_modules/
+site/build/
+site/.docusaurus/
+site/src/pages/errors/
+site/src/data/
+
