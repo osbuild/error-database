@@ -8,7 +8,9 @@
       "component": null,
       "first_seen": "2026-07-20",
       "last_seen": "2026-07-20",
-      "occurrences": [],
+      "occurrences": [
+        {}
+      ],
       "resolution": null
     }
   ],
