@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useMemo, useRef, useEffect} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import CategoryBadge from '../components/CategoryBadge';
@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <Layout title="CI Error Database">
-      <div style={{padding: '2rem', maxWidth: '1200px', margin: '0 auto'}}>
+      <div style={{padding: '2rem', width:'100%', maxWidth: '1000px', margin: '0 auto'}}>
         <h1>Composer CI Error Database</h1>
 
         <div
@@ -66,7 +66,7 @@ export default function Home() {
           }}>
           <input
             type="text"
-            placeholder="Search errors..."
+            placeholder="Search errors... (by ID, Singal, Description, Component)"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             style={{
@@ -96,7 +96,7 @@ export default function Home() {
         {sorted.length === 0 ? (
           <p>No errors found.</p>
         ) : (
-          <div style={{overflowX: 'auto'}}>
+          <div style={{overflowX: 'auto', textAlign: 'center'}}>
             <table>
               <thead>
                 <tr>

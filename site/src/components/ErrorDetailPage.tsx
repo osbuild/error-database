@@ -26,7 +26,7 @@ interface ErrorEntry {
 }
 
 export default function ErrorDetailPage({errorId}: {errorId: string}) {
-  const error = (db as {errors: ErrorEntry[]}).errors.find(
+  const error = (db as unknown as {errors: ErrorEntry[]}).errors.find(
     (e) => e.id === errorId,
   );
   const line = (lineMap as Record<string, number>)[errorId];
@@ -34,7 +34,7 @@ export default function ErrorDetailPage({errorId}: {errorId: string}) {
   if (!error) {
     return (
       <Layout title="Not Found">
-        <div style={{padding: '2rem', maxWidth: '900px', margin: '0 auto'}}>
+        <div style={{padding: '2rem', maxWidth: '1000px', margin: '0 auto'}}>
           <h1>Error not found: {errorId}</h1>
           <Link to="/">Back to dashboard</Link>
         </div>
@@ -44,7 +44,7 @@ export default function ErrorDetailPage({errorId}: {errorId: string}) {
 
   return (
     <Layout title={error.id}>
-      <div style={{padding: '2rem', maxWidth: '900px', margin: '0 auto'}}>
+      <div style={{padding: '2rem', maxWidth: '1000px', margin: '0 auto'}}>
         <div style={{marginBottom: '1rem'}}>
           <Link to="/">&larr; Back to dashboard</Link>
         </div>
@@ -95,16 +95,15 @@ export default function ErrorDetailPage({errorId}: {errorId: string}) {
           </tbody>
         </table>
 
-        <h2>Occurrences ({error.occurrences.length})</h2>
+        <h2>Occurrences ( {error.occurrences.length} )</h2>
         {error.occurrences.length === 0 ? (
           <p>No occurrences recorded yet.</p>
         ) : (
-          <table>
+          <table style={{textAlign: 'center'}}>
             <thead>
               <tr>
                 <th>Date</th>
                 <th>Pipeline</th>
-                <th>Jobs</th>
                 <th>Group</th>
               </tr>
             </thead>
@@ -112,8 +111,15 @@ export default function ErrorDetailPage({errorId}: {errorId: string}) {
               {error.occurrences.map((occ, i) => (
                 <tr key={i}>
                   <td>{occ.date}</td>
-                  <td>{occ.pipeline_id}</td>
-                  <td>{occ.job_ids.join(', ')}</td>
+                  <td>
+                    <a
+                      href={`https://gitlab.com/redhat/services/products/image-builder/ci/osbuild-composer/-/pipelines/${occ.pipeline_id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {occ.pipeline_id}
+                    </a>
+                  </td>
                   <td>{occ.group}</td>
                 </tr>
               ))}
