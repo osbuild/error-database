@@ -61,7 +61,32 @@
         }
       ],
       "resolution": null
+    },
+    {
+      "id": "COMPOSER-0002",
+      "signal": "ERROR: Compose did not finish in time",
+      "description": "All gcp/rhel-9.9-nightly-x86_64 compose jobs timed out due to org.osbuild.curl package downloads taking 15\u201320 minutes, indicating transient GCP runner network degradation.",
+      "category": "FLAKE",
+      "component": "org.osbuild.curl",
+      "first_seen": "2026-07-29",
+      "last_seen": "2026-07-29",
+      "occurrences": [
+        {
+          "date": "2026-07-29",
+          "pipeline_id": 2713776206,
+          "job_ids": [
+            15588490550,
+            15588490552,
+            15588490553,
+            15588490554,
+            15588490555,
+            15588754603
+          ],
+          "group": "RHEL-9 Nightly"
+        }
+      ],
+      "resolution": null
     }
   ],
-  "next_id": 2
+  "next_id": 3
 }
