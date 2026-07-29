@@ -86,7 +86,40 @@
         }
       ],
       "resolution": null
+    },
+    {
+      "id": "COMPOSER-0003",
+      "signal": "Error waiting for instance to become ready: timeout while waiting for state to become 'ACTIVE' (last state: 'BUILD', timeout: 30m0s)",
+      "description": "Terraform OpenStack provisioning on rhos-01 timed out after 30 minutes waiting for compute instances to transition from BUILD to ACTIVE state. No test code ran; the runner VM was never provisioned. All four rhos-01 Installer and Upgrade jobs (two batches) failed with this error on the same day.",
+      "category": "INFRASTRUCTURE",
+      "component": null,
+      "first_seen": "2026-07-29",
+      "last_seen": "2026-07-29",
+      "occurrences": [],
+      "resolution": null
+    },
+    {
+      "id": "COMPOSER-0004",
+      "signal": "failed to fetch the work request for creating the image: Get \"https://iaas.us-ashburn-1.oraclecloud.com/20160918/workRequests/...\": net/http: TLS handshake timeout",
+      "description": "OCI image compose and object upload to bucket 'osbuild-composer-ci' completed successfully, but the subsequent API call to poll the OCI work request status failed with a TLS handshake timeout against the Oracle Cloud iaas endpoint in us-ashburn-1. The failure is in the post-upload status check, not in the upload itself.",
+      "category": "EXTERNAL",
+      "component": "org.osbuild.oci",
+      "first_seen": "2026-07-29",
+      "last_seen": "2026-07-29",
+      "occurrences": [],
+      "resolution": null
+    },
+    {
+      "id": "COMPOSER-0005",
+      "signal": "Connection to [runner-ip] closed by remote host.",
+      "description": "AWS aarch64 EC2 runner VMs closed the SSH connection mid-job, preventing tests or builds from completing. Observed across both RHEL-9 and RHEL-10 pipelines on the same date and across different job types (integration tests and RPM builds). One instance logged a PAM shutdown message ('System is going down. Unprivileged users are not permitted to log in anymore.') before dropping, indicating an unexpected VM termination rather than a test-side crash. Likely spot instance reclamation or runner fleet maintenance.",
+      "category": "INFRASTRUCTURE",
+      "component": null,
+      "first_seen": "2026-07-29",
+      "last_seen": "2026-07-29",
+      "occurrences": [],
+      "resolution": null
     }
   ],
-  "next_id": 3
+  "next_id": 6
 }
